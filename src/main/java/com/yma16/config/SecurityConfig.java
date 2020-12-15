@@ -27,6 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.formLogin().and().authorizeRequests().anyRequest().authenticated();//身份验证
+        //自定义登录页
+        http.formLogin().loginPage("/login.html").loginProcessingUrl("/user/login").defaultSuccessUrl("/test/index").
+                permitAll().and().authorizeRequests().antMatchers("/","/test/hello").permitAll()
+                .anyRequest().authenticated().and().csrf().disable();//关闭csrf
+//        http.formLogin().and().authorizeRequests().anyRequest().authenticated();//身份验证
+//        http.authorizeRequests().anyRequest("","").permitAll().anyRequest().authenticated();
     }
 }
