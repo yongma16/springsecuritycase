@@ -13,6 +13,7 @@ public class IndexController {
     public  String index(){
         return "success";
     }
+
     @GetMapping("admin")
     @ResponseBody
     public  String admin(){

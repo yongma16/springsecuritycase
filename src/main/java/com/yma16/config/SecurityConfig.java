@@ -33,5 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated().and().csrf().disable();//关闭csrf
 //        http.formLogin().and().authorizeRequests().anyRequest().authenticated();//身份验证
 //        http.authorizeRequests().anyRequest("","").permitAll().anyRequest().authenticated();
+        //没有权限访问跳转自定义页面
+        http.exceptionHandling().accessDeniedPage("/unauth.html");
     }
 }
